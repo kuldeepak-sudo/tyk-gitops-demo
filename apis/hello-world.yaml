@@ -10,5 +10,5 @@ spec:
   active: true
   proxy:
     target_url: http://httpbin
-    listen_path: /operator-hello
+    listen_path: /operator-hello-world
     strip_listen_path: true
