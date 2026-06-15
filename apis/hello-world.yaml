@@ -1,26 +1,30 @@
----
 apiVersion: tyk.tyk.io/v1alpha1
 kind: TykOasApiDefinition
 metadata:
-  name: hello-world
+  name: hello-world-oas
+  namespace: tyk-demo
 spec:
-  tykExtension:
-    name: Operator hello world
-    listenPath: /operator-hello-world-KD
-    upstream:
-      url: http://httpbin
-    server:
-      listenPath:
-        value: /operator-hello-world-KD
-        strip: true
-    info:
-      name: Operator hello world
-      version: "1.0.0"
-  oas:
-    openapi: "3.0.3"
+  tykOAS:
+    openapi: 3.0.3
     info:
       title: Operator hello world
-      version: "1.0.0"
-    paths: {}
+      version: 1.0.0
     servers:
       - url: http://httpbin
+    paths:
+      /get:
+        get:
+          responses:
+            "200":
+              description: OK
+    x-tyk-api-gateway:
+      info:
+        name: Operator hello world
+        state:
+          active: true
+      server:
+        listenPath:
+          value: /operator-hello-world-KD
+          strip: true
+      upstream:
+        url: http://httpbin
