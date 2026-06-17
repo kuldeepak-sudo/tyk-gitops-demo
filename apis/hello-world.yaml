@@ -24,7 +24,7 @@ data:
           active: true
       server:
         listenPath:
-          value: /operator-hello-world-wow
+          value: /operator-hello-world-tbd
           strip: true
       upstream:
         url: http://httpbin
